@@ -29,10 +29,18 @@ public class Main {
         System.out.println(mult.toString());
 
 
-        JFrame frame = new View("Polynomial Calculator");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+//        JFrame frame = new View("Polynomial Calculator");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.pack();
+//        frame.setVisible(true);
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new View("title");
+            }
+        });
+    }
     }
 
 
