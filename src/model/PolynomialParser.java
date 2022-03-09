@@ -12,7 +12,10 @@ public class PolynomialParser {
         for (String monomString : monomStrings) {
             if(monomString.length() > 0) {
                 String[] expConst = monomString.split("X\\^");
-                if(expConst[0].equals("")) {
+                if(expConst[0].equals("-")){
+                    constant = -1;
+                }
+                else if(expConst[0].equals("")) {
                     constant = 1;
                 }
                 else {

@@ -34,7 +34,71 @@ public class View extends JFrame {
     private static JPanel panel = new JPanel(new GridBagLayout());
     GridBagConstraints c = new GridBagConstraints();
 
-    //Controller controller = new Controller();
+    public void setpTextField(JTextField pTextField) {
+        this.pTextField = pTextField;
+    }
+
+    public void setqTextField(JTextField qTextField) {
+        this.qTextField = qTextField;
+    }
+
+    public void setResultTextField(JTextField resultTextField) {
+        this.resultTextField = resultTextField;
+    }
+
+    public void setQuotientTextField(JTextField quotientTextField) {
+        this.quotientTextField = quotientTextField;
+    }
+
+    public void setpLabel(JLabel pLabel) {
+        this.pLabel = pLabel;
+    }
+
+    public void setqLabel(JLabel qLabel) {
+        this.qLabel = qLabel;
+    }
+
+    public void setResultLabel(JLabel resultLabel) {
+        this.resultLabel = resultLabel;
+    }
+
+    public void setQuotientLabel(JLabel quotientLabel) {
+        this.quotientLabel = quotientLabel;
+    }
+
+    public void setSumButton(JButton sumButton) {
+        this.sumButton = sumButton;
+    }
+
+    public void setSubButton(JButton subButton) {
+        this.subButton = subButton;
+    }
+
+    public void setMultiplyButton(JButton multiplyButton) {
+        this.multiplyButton = multiplyButton;
+    }
+
+    public void setDivisionButton(JButton divisionButton) {
+        this.divisionButton = divisionButton;
+    }
+
+    public void setDerivativeButton(JButton derivativeButton) {
+        this.derivativeButton = derivativeButton;
+    }
+
+    public void setIntegrationButton(JButton integrationButton) {
+        this.integrationButton = integrationButton;
+    }
+
+    public void setResetButton(JButton resetButton) {
+        this.resetButton = resetButton;
+    }
+
+    public static void setPanel(JPanel panel) {
+        View.panel = panel;
+    }
+
+    Controller controller = new Controller(this);
 
     public View(String title) {
         super(title);
@@ -76,18 +140,22 @@ public class View extends JFrame {
         c.gridx = 5;
         c.gridy = 0;
         panel.add(sumButton, c);
+        sumButton.addActionListener(controller);
 
         c.gridx = 6;
         c.gridy = 0;
         panel.add(subButton, c);
+        subButton.addActionListener(controller);
 
         c.gridx = 6;
         c.gridy = 1;
         panel.add(multiplyButton, c);
+        multiplyButton.addActionListener(controller);
 
         c.gridx = 5;
         c.gridy = 1;
         panel.add(divisionButton, c);
+        divisionButton.addActionListener(controller);
 
         c.gridx = 5;
         c.gridy = 3;
@@ -103,7 +171,7 @@ public class View extends JFrame {
 
         this.add(panel);
 
-        JFrame frame = new JFrame("GridBagLayoutDemo");
+        JFrame frame = new JFrame("Polynomial Calculator");
         frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

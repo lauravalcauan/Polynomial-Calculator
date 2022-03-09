@@ -5,14 +5,13 @@ import java.util.List;
 
 public class Polinom {
 
-    private int[] coef;
-    private int degree;
-
     private final List<Monom> monoms;
 
     public Polinom() {
         monoms = new ArrayList<>();
     }
+
+    public Polinom(List<Monom> monoms1) { this.monoms = monoms1;}
 
     public void addMonom(Monom m) {
         monoms.add(m);
@@ -32,28 +31,32 @@ public class Polinom {
         return poliValue;
     }
 
-    public ArrayList<Monom> getMonomMax() {
-        Polinom p = new Polinom();
-        ArrayList<Monom> maxMonom = new ArrayList<Monom>();
+    public Monom getMaxMonom() {
+        Monom max = monoms.get(0);
 
-        for (Monom i : p.getMonoms()) {
-            for(Monom j : p.getMonoms()) {
-                if( i.getExponent() > j.getExponent()) {
-                    Monom max = new Monom(i.getExponent(), i.getConstant());
-                    maxMonom.add(max);
-                } else {
-                   Monom max = new Monom(j.getExponent(), j.getConstant());
-                   maxMonom.add(max);
-                }
+        for(Monom m : monoms){
+            if(m.getExponent() >= max.getExponent()){
+                max = m;
             }
-
         }
 
-        return maxMonom;
+        return max;
+    }
 
+    @Override
+    public String toString(){
+        StringBuilder poliString = new StringBuilder();
+
+        for(Monom m : this.monoms){
+            poliString.append(m.toString());
         }
 
+        if(poliString.toString().length() == 0){
+            return "0";
+        }
 
+        return poliString.toString();
+    }
 
 
 }
