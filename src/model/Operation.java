@@ -38,8 +38,7 @@ public class Operation {
             }
 
     public List<Monom> subtraction(Polinom p, Polinom q) {
-        List<Monom> sub = new ArrayList<Monom>();
-        PolynomialParser polynomialParser = new PolynomialParser();
+        List<Monom> sub = new ArrayList<>();
         boolean[] visitedP = new boolean[p.getMonoms().size()];
         boolean[] visitedQ = new boolean[q.getMonoms().size()];
 
@@ -72,7 +71,6 @@ public class Operation {
     }
 
     public List<Monom> multiplication(Polinom p, Polinom q) {
-        List<Monom> multiply = new ArrayList<>();
         Map<Double, Monom> map = new HashMap<>();
         for (Monom i : p.getMonoms()) {
             for (Monom j : q.getMonoms()) {
@@ -95,20 +93,16 @@ public class Operation {
         Monom d;
         Polinom dq;
         while(q.getMaxMonom().getExponent() <= p.getMaxMonom().getExponent()){
-            System.out.println("p: "+p.getMaxMonom().toString()+ " q: " +q.getMaxMonom().toString());
+
             d = Monom.divide(p.getMaxMonom(),q.getMaxMonom());
-//            System.out.println(d.toString());
             quotient.add(d);
             dq = new Polinom(this.multiplication(new Polinom(new ArrayList<>(List.of(d))), q));
-//            System.out.println(dq.toString());
             p = new Polinom(this.subtraction(p,dq));
-            System.out.println(p.getMonoms() + " " + new Polinom(quotient) + " " + q.toString());
+
         }
-        System.out.println("p: "+p.getMaxMonom().toString()+ " q: " +q.getMaxMonom().toString());
         return new AbstractMap.SimpleEntry<>(p,new Polinom(quotient));
 
     }
-
 
 }
 

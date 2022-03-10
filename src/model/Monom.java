@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Monom {
 
     private double constant;
@@ -72,8 +70,4 @@ public class Monom {
 
     }
 
-
-//    public divide(ArrayList<Monom> monoms) {
-//
-//    }
 }
